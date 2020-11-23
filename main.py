@@ -17,8 +17,15 @@ class MainApp(Tk):
         self.display = ttk.Label(self, text='0', anchor='e', background='black', foreground='white', font='Helvetica 36')
         self.display.pack(side=TOP, fill=BOTH)
 
-        self.botonC= ttk.Button(self, text='C')
-        self.botonC.pack(side=TOP, fill=BOTH)
+        self.calcButtonC = ttk.Frame(self, width=68, height=50)
+        btn = ttk.Button(self.calcButtonC, text='C')
+        self.calcButtonC.pack_propagate(False)
+        btn.pack(side=TOP, fill=BOTH, expand=True)
+
+        self.calcButtonC.pack(side=TOP)
+
+        # self.botonC= ttk.Button(self, text='C')
+        # self.botonC.pack(side=TOP, fill=BOTH)
 
 
 
