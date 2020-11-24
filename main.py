@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk 
 
+# import calculator import *
 import calculator
+
 
 def imprimeuno():
     print(1)
@@ -12,14 +14,26 @@ class MainApp(Tk):
         self.geometry("272x300")
         self.title("Calculadora")
 
-        s = ttk.Style()
-        s.theme_use('alt')
-        # s.configure('my.TLabel', font='Helvetica 36', background='black', foreground='white')
+        self.display = calculator.Display(self)
+        self.display.pack(side=TOP)
 
 
-        self.display = ttk.Label(self, text='9', anchor='e', background='black', foreground='white', font='Helvetica 36')
-        self.display.grid(column=0, row=0, columnspan=2)
+        self.teclado = ttk.Frame(self, width=calculator.WIDTH*4, height=calculator.HEIGHT * 5)
+        self.teclado.grid_propagate(0)
+        self.teclado.pack(side=TOP, fill=BOTH , expand=True)
 
+        botonC = calculator.CalcButton(self, teclado, 'C')
+        botonC.grid(row=0, column=0)
+
+        botonC = calculator.CalcButton(self, teclado, '+/-')
+        botonC.grid(row=0, column=1)
+
+        botonC = calculator.CalcButton(self, teclado, '%')
+        botonC.grid(row=0, column=2)
+
+        botonC = calculator.CalcButton(self, teclado, '/')
+        botonC.grid(row=0, column=3)
+'''
         self.calcButtonC = ttk.Frame(self, width=136, height=50)
         btn = ttk.Button(self.calcButtonC, text='C')
         self.calcButtonC.pack_propagate(False)
@@ -37,6 +51,7 @@ class MainApp(Tk):
         self.calcButtondiv.pack_propagate(False)
         btn.pack(side=TOP, fill=BOTH, expand=True)
         self.calcButtondiv.grid(column=3, row=1)
+        '''
 
         # self.botonC= ttk.Button(self, text='C')
         # self.botonC.pack(side=TOP, fill=BOTH)
